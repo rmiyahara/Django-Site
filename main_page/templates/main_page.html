@@ -20,7 +20,7 @@
 </header>
 
 <!-- About Section -->
-<div class="w3-container" style="padding:128px 16px" id="about">
+<div class="w3-container w3-light-grey" style="padding:128px 16px" id="about">
   <div class="w3-row-padding w3-center" style="margin-top:64px">
     <div class="w3-half">
       <img class="w3-image w3-round-large" src="{% static '/about_me.jpg' %}" alt="What a handsome guy!" width: 100%>
@@ -37,7 +37,7 @@
 <!-- Work Section -->
 <div class="w3-container" style="padding:128px 16px" id="portfolio">
   <h3 class="w3-center">Portfolio</h3>
-  <div class="scrolling-wrapper">
+  <div class="scrolling-wrapper"> <!--TODO: Add Django iteration to db here-->>
     <div class="card w3-center"><h2>Card</h2></div>
     <div class="card w3-center"><h2>Card</h2></div>
     <div class="card w3-center"><h2>Card</h2></div>
@@ -87,13 +87,23 @@
 </div>
 
 <!-- Contact Section -->
-<div class="w3-container w3-light-grey" style="padding:128px 16px" id="contact">
-  <h3 class="w3-center">CONTACT</h3>
-  <p class="w3-center w3-large">Below you can find my contact information and my resume!</p>
+<div class="w3-container w3-white w3-center" style="padding:128px 16px" id="contact">
+  <h3 class="w3-center">Contact</h3>
+  <p class="w3-center w3-large">Below you can find my contact information and resume!</p>
   <div style="margin-top:48px">
-    <p><i class="w3-third fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> California, US</p>
-    <p><i class="w3-third fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: (408)528-5455</p>
-    <p><i class="w3-third fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: rmiyahara@gmail.com</p>
+    <div class = "w3-third w3-hover-opacity">
+      <a href = "https://mail.google.com/mail/?view=cm&fs=1&to=rmiyahara144@gmail.com" target = "_blank">
+        <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"></i> Email: rmiyahara@gmail.com</p>
+      </a>
+    </div>
+    <div class = "w3-third w3-hover-opacity" onclick = "copyStringToClipboard('4085285455')">
+      <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: (408)528-5455</p>
+    </div>
+    <div class = "w3-third w3-hover-opacity">
+      <a href = "{% static '/Resume.pdf' %}" download target = "_blank">
+        <p><i class = "fa fa-download fa-fw w3-xxlarge w3-margin-right"></i> Resume</p>
+      </a>
+    </div>
   </div>
 </div>
 
@@ -135,6 +145,19 @@ function w3_open() {
 // Close the sidebar with the close button
 function w3_close() {
     mySidebar.style.display = "none";
+}
+
+// Copy phone number to clipboard
+function copyStringToClipboard (str) {
+  var el = document.createElement('textarea');
+  el.value = str;
+  el.setAttribute('readonly', '');
+  el.style = {position: 'absolute', left: '-9999px'};
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand('copy');
+  document.body.removeChild(el);
+  alert("Phone number has been copied to the clipboard!");
 }
 </script>
 {% endblock %}

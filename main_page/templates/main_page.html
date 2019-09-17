@@ -50,8 +50,20 @@
 <!-- Skills Section -->
 <div class="w3-container w3-light-grey w3-padding-64 content" id = "work">
   <div class="w3-row-padding">
+    <h1>Work Experience</h1>
+    {% for job in jobs %}
+      <h3>{{ job.company }} - {{ job.position }}</h3>
+      <ul>
+        <li>{{ job.description1 }}</li>
+        <li>{{ job.description2 }}</li>
+        <li>{{ job.description3 }}</li>
+        <li>{{ job.description4 }}</li>
+      </ul>
+    {% endfor %}
+  </div>
+  <div class="w3-row-padding">
+    <h1>What Can I Do?</h1>
     <div class="w3-col m6">
-      <h1>What Can I Do?</h1>
       <p align='justify'>While I have only been a CS major for a little over a year, I have tried to take every chance I could to learn something new! This has made me very comfortable with functional and object oriented languages as well as in a Linux development environment.</p>
       <p align='justify'>During my time at UCLA, I was able to learn a little more about specific topics through Upper Division Electives. My electives allowed me to dig deeper into Artificial Intelligence, Machine Learning, Bluetooth/Wifi Protocols, Graphics, and Scalable Systems.</p>
       <p align='justify'>In the neighboring list, I have included a few languages/technologies that I have become proficient in through school projects, personal projects, and work.</p>

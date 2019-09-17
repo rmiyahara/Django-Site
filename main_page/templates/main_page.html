@@ -34,16 +34,14 @@
 <!-- Work Section -->
 <div class="w3-container content" style="padding:128px 16px" id="portfolio">
   <h1 class="w3-center">Portfolio</h1>
-  <div class="scrolling-wrapper"> <!--TODO: Add Django iteration to db here-->
-    <div class="card w3-center"><h2>Card</h2></div>
-    <div class="card w3-center"><h2>Card</h2></div>
-    <div class="card w3-center"><h2>Card</h2></div>
-    <div class="card w3-center"><h2>Card</h2></div>
-    <div class="card w3-center"><h2>Card</h2></div>
-    <div class="card w3-center"><h2>Card</h2></div>
-    <div class="card w3-center"><h2>Card</h2></div>
-    <div class="card w3-center"><h2>Card</h2></div>
-    <div class="card w3-center"><h2>Card</h2></div>
+  <div class="scrolling-wrapper">
+  {% for project in projects %}
+    <div class="card w3-center">
+      <h3>{{ project.title }}</h3>
+      <img class="w3-row-padding w3-image w3-round-large" src="{% static project.image %}" alt="{{ project.title }} Icon">
+      <p align = 'justify'>{{ project.description_short }}</p>
+    </div>
+  {% endfor %}
   </div>
 </div>
 

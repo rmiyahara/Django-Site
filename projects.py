@@ -1,3 +1,4 @@
+# Used to save database for projects
 from main_page.models import Project
 
 p1 = Project(

@@ -1,14 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
 {% block page_content %}
-<!-- Header with full-height image -->
-<header class="bgimg-1 w3-display-container w3-grayscale-min content" id="home">
-  <div class="w3-display-left w3-text-white content" style="padding:48px">
-    <span class="w3-jumbo w3-hide-small">Start something that matters</span><br>
-    <span class="w3-xxlarge w3-hide-large w3-hide-medium">Start something that matters</span><br>
-    <span class="w3-large">Stop wasting valuable time with projects that just isn't you.</span>
-    <p><a href="#about" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Learn more and start today</a></p>
+<!-- Header -->
+<header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-topleft w3-text-white content" style="padding:400px 200px">
+    <p><a href="#about" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">That's me <i class = "fa fa-arrow-right"></i></p></a>
+    
   </div> 
+  <!-- Icons -->>
   <div class="w3-display-bottomleft w3-text-grey w3-large content" style="padding:24px 48px">
     <i class="fa fa-facebook-official w3-hover-opacity" onclick="window.location.href='https://www.facebook.com/ryan.miyahara.3'"></i>
     <i class="fa fa-github w3-hover-opacity" onclick="window.location.href='https://github.com/rmiyahara'"></i>
@@ -31,21 +30,34 @@
   </div>
 </div>
 
-<!-- Work Section -->
-<div class="w3-container content" style="padding:128px 16px" id="portfolio">
+<!-- Portfolio Section -->
+<div class="w3-container w3-white content" style="padding:128px 16px" id="portfolio">
   <h1 class="w3-center">Portfolio</h1>
   <div class="scrolling-wrapper">
   {% for project in projects %}
-    <div class="card w3-center">
+    <!-- Small card section -->
+    <div class="card w3-center w3-hover-opacity" onclick="document.getElementById('{{ project.title }}').style.display='block'">
       <h3>{{ project.title }}</h3>
-      <img class="w3-row-padding w3-image w3-round-large" src="{% static project.image %}" alt="{{ project.title }} Icon">
+      <img class="w3-row-padding w3-image w3-round-large" src="{% static project.image %}" alt="{{ project.title }} Icon"/>
       <p align = 'justify'>{{ project.description_short }}</p>
+    </div>
+    <!-- Big card section -->
+    <div id="{{ project.title }}" class="w3-modal" onclick="this.style.display='none'">
+        <span class="w3-button w3-large w3-display-topright w3-white" onclick="this.style.display='none'" title="Close Modal Image"><i class="fa fa-remove"></i></span>
+        <div class="big_card w3-modal-content w3-animate-zoom w3-padding-64 w3-round">
+          <h2 class="w3-center">{{ project.title }} <i class="fa fa-github w3-hover-opacity" onclick="window.location.href='{{ project.github }}'"></i></h2>
+          <p class = "w3-center"><b>{{ project.date }}</b></p>
+          <img class="w3-row-padding w3-image w3-round-large" src="{% static project.image %}" alt="{{ project.title }} Icon"/>
+          <p class = "w3-padding"><b>Technology Used: {{ project.technology }}</b></p>
+          <p class = "w3-padding">{{ project.description_long }}</p>
+          <p class = "w3-padding">The code can be found <a href = "{{ project.github }}" target = "_blank" color = "w3-blue">here</a> or by clicking the GitHub icon at the title.</p>
+        </div>
     </div>
   {% endfor %}
   </div>
 </div>
 
-<!-- Skills Section -->
+<!-- Work Section -->
 <div class="w3-container w3-light-grey w3-padding-64 content" id = "work">
   <div class="w3-row-padding">
     <h1>Work Experience</h1>

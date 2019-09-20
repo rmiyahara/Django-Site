@@ -10,6 +10,12 @@
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: Arial, Helvetica, sans-serif}
 
+.back {
+  background-image: url("{% static 'background.png' %}");
+  background-repeat: repeat;
+  opacity: 0.5;
+}
+
 div.content { 
   max-width: 960px;
   margin: 0 auto;
@@ -21,11 +27,17 @@ body, html {
   line-height: 1.8;
 }
 
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* Full height image header */
 .bgimg-1 {
   background-position: center;
   background-size: cover;
-  background-image: url("{% static '/mac.jpg' %}");
+  background-image: url("{% static '/header.jpg' %}");
   min-height: 100%;
 }
 
@@ -41,7 +53,6 @@ body, html {
 }
 
 .card {
-  display: inline-block;
   flex: 0 0 auto;
   margin-right: 25px;
 }
@@ -50,8 +61,14 @@ body, html {
   border: 2px solid black;
   display: inline-block;
   width: 300px;
-  height: 420px;
+  min-height: 450px;
   background: white;
+  overflow: wrap; /* TODO: The overflow bug is here */
+}
+
+.big_card {
+  border-color: 2px solid black;
+  border-style: solid;
 }
 </style>
 <body>

@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
+{% load widget_tweaks %}
 {% block page_content %}
 <!-- Header -->
 <header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
-  <div class="w3-display-topleft w3-text-white content" style="padding:400px 200px">
+  <div class="w3-display-topleft w3-text-white content">
     <p><a href="#about" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">That's me <i class = "fa fa-arrow-right"></i></p></a>
-    
   </div> 
   <!-- Icons -->>
-  <div class="w3-display-bottomleft w3-text-grey w3-large content" style="padding:24px 48px">
+  <div class="w3-display-bottomleft w3-text-grey w3-large content">
     <i class="fa fa-facebook-official w3-hover-opacity" onclick="window.location.href='https://www.facebook.com/ryan.miyahara.3'"></i>
     <i class="fa fa-github w3-hover-opacity" onclick="window.location.href='https://github.com/rmiyahara'"></i>
     <i class="fa fa-linkedin w3-hover-opacity" onclick="window.location.href='https://www.linkedin.com/in/ryan-miyahara-203088158/'"></i>
@@ -33,25 +33,27 @@
 <!-- Portfolio Section -->
 <div class="w3-container w3-white content" style="padding:128px 16px" id="portfolio">
   <h1 class="w3-center">Portfolio</h1>
-  <div class="scrolling-wrapper">
+  <div class="scrolling-wrapper" style="margin-top:64px">
   {% for project in projects %}
     <!-- Small card section -->
     <div class="card w3-center w3-hover-opacity" onclick="document.getElementById('{{ project.title }}').style.display='block'">
       <h3>{{ project.title }}</h3>
       <img class="w3-row-padding w3-image w3-round-large" src="{% static project.image %}" alt="{{ project.title }} Icon"/>
-      <p align = 'justify'>{{ project.description_short }}</p>
+      <p class = "w3-row-padding">{{ project.description_short }}</p>
     </div>
     <!-- Big card section -->
     <div id="{{ project.title }}" class="w3-modal" onclick="this.style.display='none'">
-        <span class="w3-button w3-large w3-display-topright w3-white" onclick="this.style.display='none'" title="Close Modal Image"><i class="fa fa-remove"></i></span>
-        <div class="big_card w3-modal-content w3-animate-zoom w3-padding-64 w3-round">
-          <h2 class="w3-center">{{ project.title }} <i class="fa fa-github w3-hover-opacity" onclick="window.location.href='{{ project.github }}'"></i></h2>
-          <p class = "w3-center"><b>{{ project.date }}</b></p>
-          <img class="w3-row-padding w3-image w3-round-large" src="{% static project.image %}" alt="{{ project.title }} Icon"/>
-          <p class = "w3-padding"><b>Technology Used: {{ project.technology }}</b></p>
-          <p class = "w3-padding">{{ project.description_long }}</p>
-          <p class = "w3-padding">The code can be found <a href = "{{ project.github }}" target = "_blank" color = "w3-blue">here</a> or by clicking the GitHub icon at the title.</p>
+      <span class="w3-button w3-large w3-display-topright w3-white" onclick="this.style.display='none'" title="Close Modal Image"><i class="fa fa-remove"></i></span>
+      <div class="big_card w3-modal-content w3-animate-zoom w3-padding-64 w3-round">
+        <h2 class="w3-center">{{ project.title }} <i class="fa fa-github w3-hover-opacity" onclick="window.location.href='{{ project.github }}'"></i></h2>
+        <p class = "w3-center"><b>{{ project.date }}</b></p>
+        <img class="w3-row-padding w3-image w3-round-large" src="{% static project.image %}" alt="{{ project.title }} Icon"/>
+        <div class = "w3-padding" align = 'justify'>
+          <p><b>Technology Used: {{ project.technology }}</b></p>
+          {{ project.description_long | linebreaks }}
+          <p>The code can be found <a href = "{{ project.github }}" target = "_blank" color = "w3-blue">here</a> or by clicking the GitHub icon at the title.</p>
         </div>
+      </div>
     </div>
   {% endfor %}
   </div>

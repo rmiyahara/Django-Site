@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '192.168.1.132',
     '192.168.0.2',
+    '192.168.1.13',
     'localhost',
 ]
 
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'widget_tweaks',
     'main_page',
 ]
 

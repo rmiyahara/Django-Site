@@ -4,6 +4,4 @@ There's not much here right now, but this should end up being a site to replace 
 ## TODO List
 <ul>
 <li>Header format on small screen</li>
-<li>Update portfolio database</li>
-<li>Set background as transparent</li>
 </ul>
